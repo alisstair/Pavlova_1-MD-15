@@ -1,0 +1,14 @@
+from random import randint
+prav = 0
+mist = 0
+while mist < 3:
+    num1 = randint(1, 10)
+    num2 = randint(1, 10)
+    otvet = input(str(num1) + " + " + str(num2) + " = " )
+    if int(otvet) == num1 + num2:
+        print("Правильно!")
+        prav += 1
+    else:
+        print("Ответ неверный.")
+        mist += 1
+print("Игра окончена. Правильных ответов: ", prav)
