@@ -1,0 +1,6 @@
+n = int(input("Введите количество слов: "))
+stroka = ""
+for i in range(n):
+    slovo = input("Введите слово: ")
+    stroka += slovo + " "
+print("Ваша строка:", stroka)
