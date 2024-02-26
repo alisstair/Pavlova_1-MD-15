@@ -1,0 +1,7 @@
+kolvo = int(input("Введите количество слов: "))
+for i in range(kolvo):
+    slovo = input("Введите слово: ")
+    if 'ф' in slovo or 'Ф' in slovo:
+        print("Ого! Это редкое слово!")
+    else:
+        print("Эх, это не очень редкое слово...")
