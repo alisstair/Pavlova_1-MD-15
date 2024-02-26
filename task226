@@ -1,0 +1,6 @@
+stroka = ""
+slovo = input("Введите слово (для завершения введите 'stop'): ")
+while slovo != "stop":
+   stroka += slovo + " "
+   slovo = input("Введите слово (для завершения введите 'stop'): ")
+print("Ваша строка:", stroka)
