@@ -1,0 +1,8 @@
+def divide(n):
+    if n % 3 == 0:
+        print("Делится")
+    else:
+        print("Нет")
+
+m = int(input("Число: "))
+divide(m)
