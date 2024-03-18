@@ -1,0 +1,14 @@
+
+m = int(input("Число: "))
+divide(m)
+
+def divide_100():
+    if not m.isdigit():
+        print("ValueError")
+    elif float(m) == 0:
+        print("ZeroDivisionError")
+    else:
+        rez = 100/float(m)
+        print("Результат: ", rez)
+m = input("Число: ")
+divide_100()
