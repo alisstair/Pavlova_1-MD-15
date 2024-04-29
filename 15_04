@@ -32,3 +32,14 @@ f(['Z:\\1-МД-15\\Pavlova Anna\\image\\1.jpg',
    'Z:\\1-МД-15\\Pavlova Anna\\image\\3.jpg',
    'Z:\\1-МД-15\\Pavlova Anna\\image\\4.jpg',
    'Z:\\1-МД-15\\Pavlova Anna\\image\\5.jpg'])
+
+def watermark(in_path, out_path, txt, p):
+    im = Image.open(in_path)
+    d = ImageDraw.Draw(im)
+    black = (3, 8, 12)
+    fnt = ImageFont.truetype("arial.ttf", 25)
+    d.text(p, txt, fill=black, font=fnt)
+    im.show()
+    im.save(out_path)
+watermark('Z:\\1-МД-15\\Pavlova Anna\\image\\1.jpg', 'Z:\\1-МД-15\\Pavlova Anna\\image\\watermarked.jpg', "WATERRRR", 0,0)
+
