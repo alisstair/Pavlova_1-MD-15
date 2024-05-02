@@ -1,16 +1,46 @@
 import random
 
-number = random.randint(1, 100)
+# Функция на проверку введенных данных
+def is_valid(guess_str):
+    if guess_str.isdigit() and 1 <= int(guess_str) <= int(granica):
+        return True
+    return False
 
-while number:
-    guess_number = int(input('Угадайте число от 1 до 100: '))
+print('Добро пожаловать в числовую угадайку')
 
-    if guess_number > number:
-        print('Слишком много, попробуйте еще раз')
-        continue
-    if guess_number < number:
-        print('Слишком мало, попробуйте еще раз')
-        continue
-    else:
-        print('Вы угадали, поздравляем!')
+while True: # Пока продолжаем играть
+    granica = input('Введите максимальное число: ')
+    
+    # Проверка границы
+    if not is_valid(granica): 
+        print(f'А может быть все-таки введем целое число?')
+        continue 
+
+    number = random.randint(1, int(granica))
+    kol_vo = 0 # Кол-во попыток
+
+    # Пока число
+    while True:
+        guess_str = input(f'Угадайте число от 1 до {granica}: ')
+
+        # Проверка введенного числа
+        if not is_valid(guess_str):
+            print(f'А может быть все-таки введем целое число от 1 до {granica}?')
+            continue   
+
+        guess_number = int(guess_str)
+        kol_vo += 1
+        if guess_number > number:
+            print('Ваше число больше загаданного, попробуйте еще разок')
+        elif guess_number < number:
+            print('Ваше число меньше загаданного, попробуйте еще разок')
+        else:
+            print('Вы угадали, поздравляем!')
+            print(f'Количество попыток: {kol_vo}')
+            break
+
+    # Повторная игра   
+    play_again = input('Хотите сыграть еще раз? (да/нет): ')
+    if play_again.lower() != 'да':
+        print('Спасибо, что играли в числовую угадайку. До свидания!')
         break
