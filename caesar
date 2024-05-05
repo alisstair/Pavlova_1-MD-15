@@ -1,0 +1,11 @@
+# дешифровка
+n, s = int(input()), input()
+# 97, 122
+for i in s:
+    d = ord(i) - n
+    if d < 97:
+        d = 122 - (96 - d)
+    print(chr(d), end='')
+    # 1
+    # bwfusvfupdbftbs
+    # avetruetocaesar
