@@ -1,0 +1,13 @@
+import os
+from PIL import Image, ImageFilter
+from pathlib import Path
+def f(f_path):
+    out_f = Path('обр')
+    out_f.mkdir(exist_ok=True)
+    l = os.listdir(f_path)
+    for i in l:
+#      if i.suffix.lower() in ['.jpg', '.png']:
+        im = Image.open(i)
+        sp = im.filter(ImageFilter.SHARPEN)
+        sp.save(i)
+f('D:\\pavlova\\jj')
