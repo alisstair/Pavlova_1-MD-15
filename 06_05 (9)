@@ -1,0 +1,35 @@
+import os
+from PIL import Image, ImageFilter
+def z1():
+  a = "путь\\к\\папке\\с\\файлами"
+  b = "путь\к\новой\папке"
+
+  os.makedirs(b, exist_ok=True)
+  # os.mkdir(r"путь\к\новой\папке")
+  s = os.listdir(r"путь\\к\\папке\\с\\файлами")
+
+  for fle in s:
+      if fle.endswith('.jpg') or fle.endswith('.png'):
+          image_path = os.path.join(a, fle)
+          with Image.open(image_path) as img:
+              img.load()
+              img = img.filter(ImageFilter.SHARPEN)
+              s_path = os.path.join(b, fle)
+              img.save(s_path)
+#z1()
+
+import csv
+def z2():
+  with open("путь\\к\\файлу\\1.csv", encoding='utf-8') as r_file:
+      c_file = csv.reader(r_file, delimiter = ",")
+      c = 0
+      sum = 0
+      for row in c_file:
+          if c == 0:
+              print('Нужно купить:')
+              c += 1
+          else:
+              print(f'{row[0]} - {row[1]} шт. за {row[2]} руб.')
+              sum += int(row[1]) * int(row[2])
+      print(f'Итоговая сумма: {sum} руб.')
+z2()
