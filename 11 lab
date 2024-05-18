@@ -1,0 +1,40 @@
+def z11_123():
+    class Restaurant:
+        # self - текущий экземпляр класса
+        def __init__(self, restaurant_name, cuisine_type, rating=0): # метод
+            self.restaurant_name = restaurant_name # атрибуты
+            self.cuisine_type = cuisine_type
+            self.rating = rating # 3
+        
+        def describe_restaurant(self):
+            print(f"Название ресторана: {self.restaurant_name}")
+            print(f"Тип кухни: {self.cuisine_type}")
+            print(f"Рейтинг: {self.rating}") # 3
+
+        def open_restaurant(self):
+            print(f"Ресторан {self.restaurant_name} открыт!")
+
+        def update_rating(self, new_rating):
+            if 0 <= new_rating <= 5:  
+                self.rating = new_rating
+                print(f"Рейтинг ресторана {self.restaurant_name} обновлен до {self.rating}")
+            else:
+                print("Рейтинг должен быть в диапазоне от 0 до 5")
+
+    restaurant1 = Restaurant('Кореана', 'Азиатская', 4.5) # 1, 3
+    restaurant2 = Restaurant('Пицца Хат', 'Итальянская', 4.0) # 2, 3
+    restaurant3 = Restaurant('Эль Гаучо', 'Аргентинская', 4.7) # 2, 3
+
+    restaurant1.describe_restaurant()
+    restaurant1.open_restaurant()
+    print()
+    restaurant2.describe_restaurant()
+    restaurant2.open_restaurant()
+    print()
+    restaurant3.describe_restaurant()
+    restaurant3.open_restaurant()
+    print()
+    restaurant1.update_rating(5.0) # обновляем рейтинг кореаны
+    restaurant1.describe_restaurant()
+
+z11_123()
