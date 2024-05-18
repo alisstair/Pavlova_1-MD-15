@@ -1,0 +1,79 @@
+def z10_1():
+    import json
+    file = 'C:\\python_proj\\список.JSON'
+    # 'r' - режим чтения
+    with open(file, 'r', encoding='utf-8') as file1:
+        load = json.load(file1)
+        # Перебираем каждый продукт в списке продуктов
+        for product in load ['products']:
+            print(f'Название: {product["name"]}')
+            print(f'Цена: {product["price"]}')
+            print(f'Вec: {product["weight"]}')
+            if product['available']:
+                print('В наличии')
+            else:
+                print ('Нет в наличии.')
+            print()
+#z10_1()
+
+def z10_2():
+    import json
+    file = 'C:\\python_proj\\список.JSON'
+
+    name = input('Введите название продукта: ') 
+    price = float(input('Введите цену продукта: ')) 
+    weight = float(input('Введите вес продукта: '))
+    available = input('Продукт доступен? (да/нет): ').strip().lower() == 'да' # булевое значение
+
+    # текущие данные
+    with open(file, 'r', encoding='utf-8') as file1:
+        load = json.load(file1)
+
+    # добавление
+    n_p = {'name': name, 
+           'price': price, 
+           'weight': weight, 
+           'available': available}
+    load['products'].append(n_p)
+
+    # данные в файл
+    # ensure_ascii=False - для корректного отображения кириллицы
+    # indent=4 - кол-во отступов (пробелов)
+    with open(file, 'w', encoding='utf-8') as file1:
+        json.dump(load, file1, ensure_ascii=False, indent=4)
+
+    # вывод
+    print('\nНовый список:')
+
+    for product in load ['products']:
+            print(f'Название: {product["name"]}')
+            print(f'Цена: {product["price"]}')
+            print(f'Вec: {product["weight"]}')
+            if product['available']:
+                print('В наличии')
+            else:
+                print ('Нет в наличии.')
+            print()
+#z10_2()
+
+def z10_3():
+    with open('C:\\python_proj\\en-ru.txt', 'r', encoding='utf-8') as file:
+        rows = file.readlines()  # читаем все строки и сохраняем в список
+
+    ru_en = {}
+    
+    for row in rows:
+        words = row.strip().split(' - ')
+        if len(words) == 2: # проверка на правильное разделение
+            en = words[0]
+            ru_words = words[1].split(', ')
+
+            # добавляем в словарь, ключ - ру, значение - англ
+            for word in ru_words:
+                ru_en[word] = en
+
+    sort = dict(sorted(ru_en.items()))
+    with open('C:\\python_proj\\ru-en.txt', 'w', encoding='utf-8') as file:
+        for ru, en in sort.items():
+            file.write(f'{ru} - {en}\n')
+z10_3()
